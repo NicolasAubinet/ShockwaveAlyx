@@ -22,9 +22,10 @@ namespace ShockwaveAlyx
             _instance.DisconnectSuit();
         }
 
-        public async Task PlayPattern(HapticPattern basePattern, int delay)
+        public async Task PlayPattern(HapticPattern basePattern)
         {
             HapticPattern pattern = new HapticPattern(basePattern);
+            int delay = pattern.delay;
 
             while (pattern.groupInfos.Count > 0)
             {
