@@ -16,34 +16,34 @@ namespace ShockwaveAlyx
         #region Patterns
         private static readonly HapticPattern DropInBackpackRightPattern = new(
             new List<HapticGroupInfo>{
-                new(ShockwaveManager.HapticGroup.RIGHT_SHOULDER_BACK, 0.3f),
-                new(ShockwaveManager.HapticGroup.RIGHT_CHEST_BACK, 0.4f),
-                new(ShockwaveManager.HapticGroup.RIGHT_SPINE_BACK, 0.4f),
-                new(ShockwaveManager.HapticGroup.RIGHT_WAIST_BACK, 0.6f),
+                new(ShockwaveManager.HapticGroup.RIGHT_SHOULDER_BACK, 0.5f),
+                new(ShockwaveManager.HapticGroup.RIGHT_CHEST_BACK, 0.6f),
+                new(ShockwaveManager.HapticGroup.RIGHT_SPINE_BACK, 0.6f),
+                new(ShockwaveManager.HapticGroup.WAIST_BACK, 1.0f),
             });
 
         private static readonly HapticPattern DropInBackpackLeftPattern = new(
             new List<HapticGroupInfo>{
-                new(ShockwaveManager.HapticGroup.LEFT_SHOULDER_BACK, 0.3f),
-                new(ShockwaveManager.HapticGroup.LEFT_CHEST_BACK, 0.4f),
-                new(ShockwaveManager.HapticGroup.LEFT_SPINE_BACK, 0.4f),
-                new(ShockwaveManager.HapticGroup.LEFT_WAIST_BACK, 0.6f),
+                new(ShockwaveManager.HapticGroup.LEFT_SHOULDER_BACK, 0.5f),
+                new(ShockwaveManager.HapticGroup.LEFT_CHEST_BACK, 0.6f),
+                new(ShockwaveManager.HapticGroup.LEFT_SPINE_BACK, 0.6f),
+                new(ShockwaveManager.HapticGroup.WAIST_BACK, 1.0f),
             });
 
         private static readonly HapticPattern GetFromBackpackRightPattern = new(
             new List<HapticGroupInfo>{
-                new(ShockwaveManager.HapticGroup.RIGHT_WAIST_BACK, 0.5f),
-                new(ShockwaveManager.HapticGroup.RIGHT_SPINE_BACK, 0.4f),
-                new(ShockwaveManager.HapticGroup.RIGHT_CHEST_BACK, 0.4f),
-                new(ShockwaveManager.HapticGroup.RIGHT_SHOULDER_BACK, 0.2f),
+                new(ShockwaveManager.HapticGroup.WAIST_BACK, 0.8f),
+                new(ShockwaveManager.HapticGroup.RIGHT_SPINE_BACK, 0.6f),
+                new(ShockwaveManager.HapticGroup.RIGHT_CHEST_BACK, 0.6f),
+                new(ShockwaveManager.HapticGroup.RIGHT_SHOULDER_BACK, 0.3f),
             });
 
         private static readonly HapticPattern GetFromBackpackLeftPattern = new(
             new List<HapticGroupInfo>{
-                new(ShockwaveManager.HapticGroup.LEFT_WAIST_BACK, 0.5f),
-                new(ShockwaveManager.HapticGroup.LEFT_SPINE_BACK, 0.4f),
-                new(ShockwaveManager.HapticGroup.LEFT_CHEST_BACK, 0.4f),
-                new(ShockwaveManager.HapticGroup.LEFT_SHOULDER_BACK, 0.2f),
+                new(ShockwaveManager.HapticGroup.WAIST_BACK, 0.8f),
+                new(ShockwaveManager.HapticGroup.LEFT_SPINE_BACK, 0.6f),
+                new(ShockwaveManager.HapticGroup.LEFT_CHEST_BACK, 0.6f),
+                new(ShockwaveManager.HapticGroup.LEFT_SHOULDER_BACK, 0.3f),
             });
         #endregion
 
