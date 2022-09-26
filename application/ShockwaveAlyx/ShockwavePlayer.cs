@@ -79,7 +79,7 @@ namespace ShockwaveAlyx
 
         public void PlayerHurt(int healthRemaining, string enemy, float locationAngle, string enemyName, string enemyDebugName)
         {
-            // TODO
+            ShockwaveManager.Instance.sendHapticsPulsewithPositionInfo(ShockwaveManager.HapticRegion.TORSO, 1, locationAngle, 2, 4, 50);
         }
 
         public void PlayerShoot(string weapon)
