@@ -185,11 +185,11 @@ namespace ShockwaveAlyx
                 }
                 else if (command == "PlayerCoughEnd")
                 {
-                    _player.Coughing = false;
+                    _player.StopCough();
                 }
                 else if (command == "PlayerCoveredMouth")
                 {
-                    _player.Coughing = false;
+                    _player.StopCough();
                 }
                 else if (command == "GrabbityGloveCatch")
                 {
@@ -232,7 +232,7 @@ namespace ShockwaveAlyx
                     if (splitted.Length > 1)
                     {
                         int leftHolder = int.Parse(splitted[1].Trim());
-                        _player.StoredItemInItemholder(leftHolder == 1);
+                        _player.StoredItemInItemHolder(leftHolder == 1);
                     }
                 }
                 else if (command == "PlayerRemovedItemFromItemholder")
@@ -240,7 +240,7 @@ namespace ShockwaveAlyx
                     if (splitted.Length > 1)
                     {
                         int leftHolder = int.Parse(splitted[1].Trim());
-                        _player.RemovedItemFromItemholder(leftHolder == 1);
+                        _player.RemovedItemFromItemHolder(leftHolder == 1);
                     }
                 }
                 else if (command == "PrimaryHandChanged" || command == "SingleControllerModeChanged")
