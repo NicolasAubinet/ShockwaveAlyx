@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -403,10 +404,11 @@ namespace ShockwaveAlyx
                 return;
             }
 
-            btnStart.Enabled = false;
-            btnStop.Enabled = true;
+            btnConnect.Enabled = false;
+            btnDisconnect.Enabled = true;
             btnBrowse.Enabled = false;
             btnTest.Enabled = true;
+            btnLaunchGame.Enabled = true;
 
             WriteTextSafe("Starting...");
 
@@ -420,10 +422,11 @@ namespace ShockwaveAlyx
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            btnStart.Enabled = true;
-            btnStop.Enabled = false;
+            btnConnect.Enabled = true;
+            btnDisconnect.Enabled = false;
             btnBrowse.Enabled = true;
             btnTest.Enabled = false;
+            btnLaunchGame.Enabled = false;
 
             _parsingMode = false;
 
@@ -446,24 +449,30 @@ namespace ShockwaveAlyx
             }
         }
 
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            // SettingsForm sForm = new SettingsForm(this);
-            // sForm.Show();
-            // btnSettings.Enabled = false;
-        }
-
         private void btnTest_Click(object sender, EventArgs e)
         {
             _player.PlayTestHaptic();
         }
 
+        private void btnLaunchGame_Click(object sender, EventArgs e)
+        {
+            Process proc = new Process();
+            proc.StartInfo.FileName = "steam.exe";
+            proc.StartInfo.Arguments = "-applaunch 546560 -condebug";
+            proc.StartInfo.UseShellExecute = false;
+            proc.StartInfo.CreateNoWindow = false;
+            proc.Start();
+
+            WriteTextSafe("Launching game...");
+        }
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            btnStart.Enabled = true;
-            btnStop.Enabled = false;
+            btnConnect.Enabled = true;
+            btnDisconnect.Enabled = false;
             btnBrowse.Enabled = true;
             btnTest.Enabled = false;
+            btnLaunchGame.Enabled = false;
 
             _parsingMode = false;
 
