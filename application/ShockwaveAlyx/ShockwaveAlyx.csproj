@@ -12,6 +12,9 @@
 
     <ItemGroup>
       <None Include="shockwave-logo.png" />
+      <None Update="ShockWaveIMU.dll">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>
