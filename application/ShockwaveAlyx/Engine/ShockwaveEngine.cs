@@ -1,11 +1,61 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace ShockwaveAlyx
 {
     public class ShockwaveEngine
     {
-        private ShockwaveManager _instance;
+        private readonly ShockwaveManager _instance;
+
+        #region Mirror
+        private static readonly int[,] VerticalMirror =
+        {
+            // Arms front
+            { 54, 46 },
+            { 52, 44 },
+            { 50, 42 },
+            { 48, 40 },
+            // Arms back
+            { 47, 55 },
+            { 45, 53 },
+            { 43, 51 },
+            { 41, 49 },
+            // Legs front
+            { 70, 62 },
+            { 68, 60 },
+            { 66, 58 },
+            { 64, 56 },
+            // Legs back
+            { 63, 71 },
+            { 61, 69 },
+            { 59, 67 },
+            { 57, 65 },
+            // Body front
+            { 6, 1 },
+            { 7, 0 },
+            { 14, 9 },
+            { 15, 8 },
+            { 22, 17 },
+            { 23, 16 },
+            { 30, 25 },
+            { 31, 24 },
+            { 38, 33 },
+            { 39, 32 },
+            // Body back
+            { 2, 5 },
+            { 3, 4 },
+            { 10, 13 },
+            { 11, 12 },
+            { 18, 21 },
+            { 19, 20 },
+            { 26, 29 },
+            { 27, 28 },
+            { 34, 37 },
+            { 35, 36 },
+        };
+        #endregion
 
         public ShockwaveEngine()
         {
@@ -51,6 +101,35 @@ namespace ShockwaveAlyx
                 ShockwaveManager.Instance?.sendHapticsPulse(indexes.ToArray(), intensities.ToArray(), delay);
                 await Task.Delay(delay);
             }
+        }
+
+        public int[] GetPatternMirror(int[] basePattern)
+        {
+            int[] pattern = new int[basePattern.Length];
+
+            for (int i = 0; i < basePattern.Length; i++)
+            {
+                bool foundMirror = false;
+                for (int j = 0; j < VerticalMirror.GetLength(0); j++)
+                {
+                    if (VerticalMirror[j, 0] == basePattern[i])
+                    {
+                        pattern[i] = VerticalMirror[j, 1];
+                        foundMirror = true;
+                        break;
+                    }
+                    else if (VerticalMirror[j, 1] == basePattern[i])
+                    {
+                        pattern[i] = VerticalMirror[j, 0];
+                        foundMirror = true;
+                        break;
+                    }
+                }
+
+                Debug.Assert(foundMirror, $"Could not find mirror for pattern index {basePattern[i]}");
+            }
+
+            return pattern;
         }
     }
 }

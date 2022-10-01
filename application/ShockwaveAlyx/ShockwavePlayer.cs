@@ -242,13 +242,17 @@ namespace ShockwaveAlyx
                 49, 51, 53, 55
             };
 
+            int[] pattern = leftArm
+                ? _engine.GetPatternMirror(fullBodyRightPatternIndices)
+                : fullBodyRightPatternIndices;
+
             for (int i = 0; i < (100 - _playerRemainingHealth) / 12; i++)
             {
                 // Body
                 const int delay = 50;
-                HapticIndexPattern bodyPattern = new(fullBodyRightPatternIndices, 0.5f, delay);
+                HapticIndexPattern bodyPattern = new(pattern, 0.5f, delay);
                 PlayPattern(bodyPattern);
-                int patternDuration = delay * fullBodyRightPatternIndices.Length;
+                int patternDuration = delay * pattern.Length;
 
                 // Arm
                 ShockwaveManager.HapticGroup group =
@@ -263,8 +267,7 @@ namespace ShockwaveAlyx
         public void ClipInserted()
         {
             int[] rightArmIndices = { 55, 53 };
-            int[] leftArmIndices = { 47, 45 };
-            int[] indices = LeftHandedMode ? leftArmIndices : rightArmIndices;
+            int[] indices = LeftHandedMode ? _engine.GetPatternMirror(rightArmIndices) : rightArmIndices;
 
             HapticIndexPattern pattern = new(indices, 0.3f, 25);
             PlayPattern(pattern);
