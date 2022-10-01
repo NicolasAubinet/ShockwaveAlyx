@@ -165,7 +165,7 @@ namespace ShockwaveAlyx
                 }
                 else if (command == "PlayerReleasedByBarnacle")
                 {
-                    _player.BarnacleGrab = false;
+                    _player.BarnacleGrabStop();
                 }
                 else if (command == "PlayerDeath")
                 {
@@ -311,7 +311,6 @@ namespace ShockwaveAlyx
                     _player.ChamberedRound();
                 }
             }
-            WriteTextSafe(line);
 
             GC.Collect();
         }

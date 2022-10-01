@@ -73,7 +73,7 @@ namespace ShockwaveAlyx
             _instance.DisconnectSuit();
         }
 
-        public async Task PlayPattern(HapticGroupPattern pattern)
+        public async Task PlayPattern(HapticGroupPattern pattern, Func<bool> mustInterrupt = null)
         {
             int delay = pattern.delay;
 
@@ -82,10 +82,15 @@ namespace ShockwaveAlyx
                 // ShockwaveManager.Instance?.SendHapticGroup(hapticGroupInfo.group, hapticGroupInfo.intensity,( (int)(delay*1.5f)/25) *25);
                 ShockwaveManager.Instance?.SendHapticGroup(hapticGroupInfo.group, hapticGroupInfo.intensity, delay);
                 await Task.Delay(delay);
+
+                if (mustInterrupt != null && mustInterrupt())
+                {
+                    break;
+                }
             }
         }
 
-        public async Task PlayPattern(HapticIndexPattern pattern)
+        public async Task PlayPattern(HapticIndexPattern pattern, Func<bool> mustInterrupt = null)
         {
             int delay = pattern.delay;
 
@@ -100,6 +105,11 @@ namespace ShockwaveAlyx
                 }
                 ShockwaveManager.Instance?.sendHapticsPulse(indexes.ToArray(), intensities.ToArray(), delay);
                 await Task.Delay(delay);
+
+                if (mustInterrupt != null && mustInterrupt())
+                {
+                    break;
+                }
             }
         }
 
