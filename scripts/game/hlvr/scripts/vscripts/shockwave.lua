@@ -893,118 +893,116 @@ function 	OnPlayerTeleportFinish	(param)
   end
 end
 
-
 if IsServer() then   
 
-
   -- Stop listening to the events if we're already listening to them (this is so we can safely reload the script)
-  if onplayershoot_handle ~= nil then
-    StopListeningToGameEvent(onplayershootweapon_handle)
+  if onplayershoot_event ~= nil then
+    StopListeningToGameEvent(onplayershootweapon_event)
 
-    StopListeningToGameEvent(onplayerhurt_handle)
+    StopListeningToGameEvent(onplayerhurt_event)
 
-    StopListeningToGameEvent(onplayergrabbityglovepull_handle)
-    StopListeningToGameEvent(onplayergrabbedbybarnacle_handle)
-    StopListeningToGameEvent(onplayerreleasedbybarnacle_handle)
-    StopListeningToGameEvent(onplayerhealthpenused_handle)
-    StopListeningToGameEvent(onweaponswitch_handle)    
-    StopListeningToGameEvent(ongamenewmap_handle)        
-    StopListeningToGameEvent(onplayerspawn_handle)    
-    StopListeningToGameEvent(onentity_killed_handle)   
-    StopListeningToGameEvent(onentity_hurt_handle)    
+    StopListeningToGameEvent(onplayergrabbityglovepull_event)
+    StopListeningToGameEvent(onplayergrabbedbybarnacle_event)
+    StopListeningToGameEvent(onplayerreleasedbybarnacle_event)
+    StopListeningToGameEvent(onplayerhealthpenused_event)
+    StopListeningToGameEvent(onweaponswitch_event)    
+    StopListeningToGameEvent(ongamenewmap_event)        
+    StopListeningToGameEvent(onplayerspawn_event)    
+    StopListeningToGameEvent(onentity_killed_event)   
+    StopListeningToGameEvent(onentity_hurt_event)    
 
 
 
-StopListeningToGameEvent(	onplayer_teleport_start_handle	)
-StopListeningToGameEvent(	onplayer_teleport_finish_handle	)
+StopListeningToGameEvent(	onplayer_teleport_start_event	)
+StopListeningToGameEvent(	onplayer_teleport_finish_event	)
 
-StopListeningToGameEvent(	onitem_pickup_handle	)
-StopListeningToGameEvent(	onitem_released_handle	)
-StopListeningToGameEvent(	ongrabbity_glove_catch_handle	)
-StopListeningToGameEvent(	onplayer_picked_up_weapon_off_hand_handle	)
-StopListeningToGameEvent(	onplayer_picked_up_weapon_off_hand_crafting_handle	)
-StopListeningToGameEvent(	onplayer_eject_clip_handle	)
-StopListeningToGameEvent(	onplayer_armed_grenade_handle	)
-StopListeningToGameEvent(	onplayer_health_pen_prepare_handle	)
-StopListeningToGameEvent(	onplayer_health_pen_retract_handle	)
-StopListeningToGameEvent(	onplayer_pistol_clip_inserted_handle	)
-StopListeningToGameEvent(	onplayer_pistol_empty_chamber_handle	)
-StopListeningToGameEvent(	onplayer_pistol_chambered_round_handle	)
-StopListeningToGameEvent(	onplayer_pistol_slide_lock_handle	)
-StopListeningToGameEvent(	onplayer_pistol_bought_lasersight_handle	)
-StopListeningToGameEvent(	onplayer_pistol_toggle_lasersight_handle	)
-StopListeningToGameEvent(	onplayer_pistol_bought_burstfire_handle	)
-StopListeningToGameEvent(	onplayer_pistol_toggle_burstfire_handle	)
-StopListeningToGameEvent(	onplayer_pistol_pickedup_charged_clip_handle	)
-StopListeningToGameEvent(	onplayer_pistol_armed_charged_clip_handle	)
-StopListeningToGameEvent(	onplayer_pistol_clip_charge_ended_handle	)
-StopListeningToGameEvent(	onplayer_retrieved_backpack_clip_handle	)
-StopListeningToGameEvent(	onplayer_drop_ammo_in_backpack_handle	)
-StopListeningToGameEvent(	onplayer_drop_resin_in_backpack_handle	)
-StopListeningToGameEvent(	onplayer_using_healthstation_handle	)
-StopListeningToGameEvent(	onhealth_station_open_handle	)
-StopListeningToGameEvent(	onplayer_looking_at_wristhud_handle	)
-StopListeningToGameEvent(	onplayer_shotgun_shell_loaded_handle	)
-StopListeningToGameEvent(	onplayer_shotgun_state_changed_handle	)
-StopListeningToGameEvent(	onplayer_shotgun_upgrade_grenade_launcher_state_handle	)
-StopListeningToGameEvent(	onplayer_shotgun_autoloader_state_handle	)
-StopListeningToGameEvent(	onplayer_shotgun_autoloader_shells_added_handle	)
-StopListeningToGameEvent(	onplayer_shotgun_upgrade_quickfire_handle	)
-StopListeningToGameEvent(	onplayer_shotgun_is_ready_handle	)
-StopListeningToGameEvent(	onplayer_shotgun_open_handle	)
-StopListeningToGameEvent(	onplayer_shotgun_loaded_shells_handle	)
-StopListeningToGameEvent(	onplayer_shotgun_upgrade_grenade_long_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_capsule_chamber_empty_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_cycled_capsule_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_magazine_empty_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_opened_casing_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_closed_casing_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_inserted_capsule_in_chamber_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_inserted_capsule_in_magazine_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_upgrade_selector_can_use_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_upgrade_selector_used_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_upgrade_can_charge_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_upgrade_can_not_charge_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_upgrade_fully_charged_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_upgrade_not_fully_charged_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_upgrade_fired_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_energy_ball_can_charge_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_energy_ball_fully_charged_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_energy_ball_not_fully_charged_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_energy_ball_can_pick_up_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_energy_ball_picked_up_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_stun_grenade_ready_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_stun_grenade_not_ready_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_stun_grenade_picked_up_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_explode_button_ready_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_explode_button_not_ready_handle	)
-StopListeningToGameEvent(	onplayer_rapidfire_explode_button_pressed_handle	)
-StopListeningToGameEvent(	onplayer_started_2h_levitate_handle	)
-StopListeningToGameEvent(	onplayer_stored_item_in_itemholder_handle	)
-StopListeningToGameEvent(	onplayer_removed_item_from_itemholder_handle	)
-StopListeningToGameEvent(	onplayer_attached_flashlight_handle	)
-StopListeningToGameEvent(	onhealth_pen_teach_storage_handle	)
-StopListeningToGameEvent(	onhealth_vial_teach_storage_handle	)
-StopListeningToGameEvent(	onplayer_pickedup_storable_clip_handle	)
-StopListeningToGameEvent(	onplayer_pickedup_insertable_clip_handle	)
-StopListeningToGameEvent(	onplayer_covered_mouth_handle	)
-StopListeningToGameEvent(	onplayer_upgraded_weapon_handle	)
-StopListeningToGameEvent(	ontripmine_hack_started_handle	)
-StopListeningToGameEvent(	ontripmine_hacked_handle	)
-StopListeningToGameEvent(	onprimary_hand_changed_handle	)
-StopListeningToGameEvent(	onsingle_controller_mode_changed_handle	)
-StopListeningToGameEvent(	onmovement_hand_changed_handle	)
-StopListeningToGameEvent(	oncombine_tank_moved_by_player_handle	)
-StopListeningToGameEvent(	onplayer_continuous_jump_finish_handle	)
-StopListeningToGameEvent(	onplayer_continuous_mantle_finish_handle	)
-StopListeningToGameEvent(	onplayer_grabbed_ladder_handle	)
+StopListeningToGameEvent(	onitem_pickup_event	)
+StopListeningToGameEvent(	onitem_released_event	)
+StopListeningToGameEvent(	ongrabbity_glove_catch_event	)
+StopListeningToGameEvent(	onplayer_picked_up_weapon_off_hand_event	)
+StopListeningToGameEvent(	onplayer_picked_up_weapon_off_hand_crafting_event	)
+StopListeningToGameEvent(	onplayer_eject_clip_event	)
+StopListeningToGameEvent(	onplayer_armed_grenade_event	)
+StopListeningToGameEvent(	onplayer_health_pen_prepare_event	)
+StopListeningToGameEvent(	onplayer_health_pen_retract_event	)
+StopListeningToGameEvent(	onplayer_pistol_clip_inserted_event	)
+StopListeningToGameEvent(	onplayer_pistol_empty_chamber_event	)
+StopListeningToGameEvent(	onplayer_pistol_chambered_round_event	)
+StopListeningToGameEvent(	onplayer_pistol_slide_lock_event	)
+StopListeningToGameEvent(	onplayer_pistol_bought_lasersight_event	)
+StopListeningToGameEvent(	onplayer_pistol_toggle_lasersight_event	)
+StopListeningToGameEvent(	onplayer_pistol_bought_burstfire_event	)
+StopListeningToGameEvent(	onplayer_pistol_toggle_burstfire_event	)
+StopListeningToGameEvent(	onplayer_pistol_pickedup_charged_clip_event	)
+StopListeningToGameEvent(	onplayer_pistol_armed_charged_clip_event	)
+StopListeningToGameEvent(	onplayer_pistol_clip_charge_ended_event	)
+StopListeningToGameEvent(	onplayer_retrieved_backpack_clip_event	)
+StopListeningToGameEvent(	onplayer_drop_ammo_in_backpack_event	)
+StopListeningToGameEvent(	onplayer_drop_resin_in_backpack_event	)
+StopListeningToGameEvent(	onplayer_using_healthstation_event	)
+StopListeningToGameEvent(	onhealth_station_open_event	)
+StopListeningToGameEvent(	onplayer_looking_at_wristhud_event	)
+StopListeningToGameEvent(	onplayer_shotgun_shell_loaded_event	)
+StopListeningToGameEvent(	onplayer_shotgun_state_changed_event	)
+StopListeningToGameEvent(	onplayer_shotgun_upgrade_grenade_launcher_state_event	)
+StopListeningToGameEvent(	onplayer_shotgun_autoloader_state_event	)
+StopListeningToGameEvent(	onplayer_shotgun_autoloader_shells_added_event	)
+StopListeningToGameEvent(	onplayer_shotgun_upgrade_quickfire_event	)
+StopListeningToGameEvent(	onplayer_shotgun_is_ready_event	)
+StopListeningToGameEvent(	onplayer_shotgun_open_event	)
+StopListeningToGameEvent(	onplayer_shotgun_loaded_shells_event	)
+StopListeningToGameEvent(	onplayer_shotgun_upgrade_grenade_long_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_capsule_chamber_empty_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_cycled_capsule_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_magazine_empty_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_opened_casing_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_closed_casing_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_inserted_capsule_in_chamber_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_inserted_capsule_in_magazine_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_upgrade_selector_can_use_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_upgrade_selector_used_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_upgrade_can_charge_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_upgrade_can_not_charge_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_upgrade_fully_charged_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_upgrade_not_fully_charged_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_upgrade_fired_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_energy_ball_can_charge_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_energy_ball_fully_charged_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_energy_ball_not_fully_charged_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_energy_ball_can_pick_up_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_energy_ball_picked_up_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_stun_grenade_ready_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_stun_grenade_not_ready_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_stun_grenade_picked_up_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_explode_button_ready_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_explode_button_not_ready_event	)
+StopListeningToGameEvent(	onplayer_rapidfire_explode_button_pressed_event	)
+StopListeningToGameEvent(	onplayer_started_2h_levitate_event	)
+StopListeningToGameEvent(	onplayer_stored_item_in_itemholder_event	)
+StopListeningToGameEvent(	onplayer_removed_item_from_itemholder_event	)
+StopListeningToGameEvent(	onplayer_attached_flashlight_event	)
+StopListeningToGameEvent(	onhealth_pen_teach_storage_event	)
+StopListeningToGameEvent(	onhealth_vial_teach_storage_event	)
+StopListeningToGameEvent(	onplayer_pickedup_storable_clip_event	)
+StopListeningToGameEvent(	onplayer_pickedup_insertable_clip_event	)
+StopListeningToGameEvent(	onplayer_covered_mouth_event	)
+StopListeningToGameEvent(	onplayer_upgraded_weapon_event	)
+StopListeningToGameEvent(	ontripmine_hack_started_event	)
+StopListeningToGameEvent(	ontripmine_hacked_event	)
+StopListeningToGameEvent(	onprimary_hand_changed_event	)
+StopListeningToGameEvent(	onsingle_controller_mode_changed_event	)
+StopListeningToGameEvent(	onmovement_hand_changed_event	)
+StopListeningToGameEvent(	oncombine_tank_moved_by_player_event	)
+StopListeningToGameEvent(	onplayer_continuous_jump_finish_event	)
+StopListeningToGameEvent(	onplayer_continuous_mantle_finish_event	)
+StopListeningToGameEvent(	onplayer_grabbed_ladder_event	)
 
-StopListeningToGameEvent(	ontwo_hand_pistol_grab_start_handle	)
-StopListeningToGameEvent(	ontwo_hand_pistol_grab_end_handle	)
-StopListeningToGameEvent(	ontwo_hand_rapidfire_grab_start_handle	)
-StopListeningToGameEvent(	ontwo_hand_rapidfire_grab_end_handle	)
-StopListeningToGameEvent(	ontwo_hand_shotgun_grab_start_handle	)
-StopListeningToGameEvent(	ontwo_hand_shotgun_grab_end_handle	)
+StopListeningToGameEvent(	ontwo_hand_pistol_grab_start_event	)
+StopListeningToGameEvent(	ontwo_hand_pistol_grab_end_event	)
+StopListeningToGameEvent(	ontwo_hand_rapidfire_grab_start_event	)
+StopListeningToGameEvent(	ontwo_hand_rapidfire_grab_end_event	)
+StopListeningToGameEvent(	ontwo_hand_shotgun_grab_start_event	)
+StopListeningToGameEvent(	ontwo_hand_shotgun_grab_end_event	)
 
 
 
@@ -1012,150 +1010,150 @@ StopListeningToGameEvent(	ontwo_hand_shotgun_grab_end_handle	)
 
   end
 
-  if ongamenewmap_handle ~= nil then
-    StopListeningToGameEvent(ongamenewmap_handle)    
+  if ongamenewmap_event ~= nil then
+    StopListeningToGameEvent(ongamenewmap_event)    
   end
 
-  if ongamenewmap_handle == nil then
-    ongamenewmap_handle = ListenToGameEvent("game_newmap", OnGameNewMap, nil)
+  if ongamenewmap_event == nil then
+    ongamenewmap_event = ListenToGameEvent("game_newmap", OnGameNewMap, nil)
   end
 
-  if onplayershootweapon_handle == nil then
-    onplayershootweapon_handle = ListenToGameEvent("player_shoot_weapon", OnPlayerShootWeapon, nil)
+  if onplayershootweapon_event == nil then
+    onplayershootweapon_event = ListenToGameEvent("player_shoot_weapon", OnPlayerShootWeapon, nil)
   end
 
-  if onplayerhurt_handle == nil then
-    onplayerhurt_handle = ListenToGameEvent("player_hurt", OnPlayerHurt, nil)
+  if onplayerhurt_event == nil then
+    onplayerhurt_event = ListenToGameEvent("player_hurt", OnPlayerHurt, nil)
   end
 
 
-  if onplayergrabbityglovepull_handle == nil then
-    onplayergrabbityglovepull_handle = ListenToGameEvent("grabbity_glove_pull", OnGrabbityGlovePull, nil)
+  if onplayergrabbityglovepull_event == nil then
+    onplayergrabbityglovepull_event = ListenToGameEvent("grabbity_glove_pull", OnGrabbityGlovePull, nil)
   end
 
-  if onplayergrabbityglovelockstart_handle == nil then
-    onplayergrabbityglovelockstart_handle = ListenToGameEvent("grabbity_glove_locked_on_start", OnGrabbityGloveLockStart, nil)
+  if onplayergrabbityglovelockstart_event == nil then
+    onplayergrabbityglovelockstart_event = ListenToGameEvent("grabbity_glove_locked_on_start", OnGrabbityGloveLockStart, nil)
   end
 
-  if onplayergrabbityglovelockstop_handle == nil then
-    onplayergrabbityglovelockstop_handle = ListenToGameEvent("grabbity_glove_locked_on_stop", OnGrabbityGloveLockStop, nil)
+  if onplayergrabbityglovelockstop_event == nil then
+    onplayergrabbityglovelockstop_event = ListenToGameEvent("grabbity_glove_locked_on_stop", OnGrabbityGloveLockStop, nil)
   end
 
-  if onplayergrabbedbybarnacle_handle == nil then
-    onplayergrabbedbybarnacle_handle = ListenToGameEvent("player_grabbed_by_barnacle", OnGrabbedByBarnacle, nil)
+  if onplayergrabbedbybarnacle_event == nil then
+    onplayergrabbedbybarnacle_event = ListenToGameEvent("player_grabbed_by_barnacle", OnGrabbedByBarnacle, nil)
   end
 
-  if onplayerreleasedbybarnacle_handle == nil then
-    onplayerreleasedbybarnacle_handle = ListenToGameEvent("player_released_by_barnacle", OnReleasedByBarnacle, nil)
+  if onplayerreleasedbybarnacle_event == nil then
+    onplayerreleasedbybarnacle_event = ListenToGameEvent("player_released_by_barnacle", OnReleasedByBarnacle, nil)
   end
 
-  if onplayerhealthpenused_handle == nil then
-    onplayerhealthpenused_handle = ListenToGameEvent("player_health_pen_used", OnPlayerHealthPenUsed, nil)
+  if onplayerhealthpenused_event == nil then
+    onplayerhealthpenused_event = ListenToGameEvent("player_health_pen_used", OnPlayerHealthPenUsed, nil)
   end
 
-  if onweaponswitch_handle == nil then
-    onweaponswitch_handle = ListenToGameEvent("weapon_switch", OnWeaponSwitch, nil)
+  if onweaponswitch_event == nil then
+    onweaponswitch_event = ListenToGameEvent("weapon_switch", OnWeaponSwitch, nil)
   end
 
-  if onentity_killed_handle == nil then
-    onentity_killed_handle = ListenToGameEvent("entity_killed", OnEntityKilled, nil)
+  if onentity_killed_event == nil then
+    onentity_killed_event = ListenToGameEvent("entity_killed", OnEntityKilled, nil)
   end
 
-if onplayer_teleport_start_handle == nil then onplayer_teleport_start_handle=ListenToGameEvent("player_teleport_start",OnPlayerTeleportStart, nil) end
-if onplayer_teleport_finish_handle == nil then onplayer_teleport_finish_handle=ListenToGameEvent("player_teleport_finish",OnPlayerTeleportFinish, nil) end
+if onplayer_teleport_start_event == nil then onplayer_teleport_start_event=ListenToGameEvent("player_teleport_start",OnPlayerTeleportStart, nil) end
+if onplayer_teleport_finish_event == nil then onplayer_teleport_finish_event=ListenToGameEvent("player_teleport_finish",OnPlayerTeleportFinish, nil) end
 
-if onitem_pickup_handle == nil then onitem_pickup_handle=ListenToGameEvent("item_pickup",OnItemPickup, nil) end
-if onitem_released_handle == nil then onitem_released_handle=ListenToGameEvent("item_released",OnItemReleased, nil) end
-if onweapon_switch_handle == nil then onweapon_switch_handle=ListenToGameEvent("weapon_switch",OnWeaponSwitch, nil) end
-if ongrabbity_glove_pull_handle == nil then ongrabbity_glove_pull_handle=ListenToGameEvent("grabbity_glove_pull",OnGrabbityGlovePull, nil) end
-if ongrabbity_glove_catch_handle == nil then ongrabbity_glove_catch_handle=ListenToGameEvent("grabbity_glove_catch",OnGrabbityGloveCatch, nil) end
-if ongrabbity_glove_locked_on_start_handle == nil then ongrabbity_glove_locked_on_start_handle=ListenToGameEvent("grabbity_glove_locked_on_start",OnGrabbityGloveLockedOnStart, nil) end
-if ongrabbity_glove_locked_on_stop_handle == nil then ongrabbity_glove_locked_on_stop_handle=ListenToGameEvent("grabbity_glove_locked_on_stop",OnGrabbityGloveLockedOnStop, nil) end
---if onplayer_gestured_handle == nil then onplayer_gestured_handle=ListenToGameEvent("player_gestured",OnPlayerGestured, nil) end
-if onplayer_picked_up_weapon_off_hand_handle == nil then onplayer_picked_up_weapon_off_hand_handle=ListenToGameEvent("player_picked_up_weapon_off_hand",OnPlayerPickedUpWeaponOffHand, nil) end
-if onplayer_picked_up_weapon_off_hand_crafting_handle == nil then onplayer_picked_up_weapon_off_hand_crafting_handle=ListenToGameEvent("player_picked_up_weapon_off_hand_crafting",OnPlayerPickedUpWeaponOffHandCrafting, nil) end
---if onplayer_eject_clip_handle == nil then onplayer_eject_clip_handle=ListenToGameEvent("player_eject_clip",OnPlayerEjectClip, nil) end
---if onplayer_armed_grenade_handle == nil then onplayer_armed_grenade_handle=ListenToGameEvent("player_armed_grenade",OnPlayerArmedGrenade, nil) end
---if onplayer_health_pen_prepare_handle == nil then onplayer_health_pen_prepare_handle=ListenToGameEvent("player_health_pen_prepare",OnPlayerHealthPenPrepare, nil) end
---if onplayer_health_pen_retract_handle == nil then onplayer_health_pen_retract_handle=ListenToGameEvent("player_health_pen_retract",OnPlayerHealthPenRetract, nil) end
-if onplayer_health_pen_used_handle == nil then onplayer_health_pen_used_handle=ListenToGameEvent("player_health_pen_used",OnPlayerHealthPenUsed, nil) end
-if onplayer_pistol_clip_inserted_handle == nil then onplayer_pistol_clip_inserted_handle=ListenToGameEvent("player_pistol_clip_inserted",OnPlayerPistolClipInserted, nil) end
---if onplayer_pistol_empty_chamber_handle == nil then onplayer_pistol_empty_chamber_handle=ListenToGameEvent("player_pistol_empty_chamber",OnPlayerPistolEmptyChamber, nil) end
-if onplayer_pistol_chambered_round_handle == nil then onplayer_pistol_chambered_round_handle=ListenToGameEvent("player_pistol_chambered_round",OnPlayerPistolChamberedRound, nil) end
---if onplayer_pistol_slide_lock_handle == nil then onplayer_pistol_slide_lock_handle=ListenToGameEvent("player_pistol_slide_lock",OnPlayerPistolSlideLock, nil) end
---if onplayer_pistol_bought_lasersight_handle == nil then onplayer_pistol_bought_lasersight_handle=ListenToGameEvent("player_pistol_bought_lasersight",OnPlayerPistolBoughtLasersight, nil) end
---if onplayer_pistol_toggle_lasersight_handle == nil then onplayer_pistol_toggle_lasersight_handle=ListenToGameEvent("player_pistol_toggle_lasersight",OnPlayerPistolToggleLasersight, nil) end
---if onplayer_pistol_bought_burstfire_handle == nil then onplayer_pistol_bought_burstfire_handle=ListenToGameEvent("player_pistol_bought_burstfire",OnPlayerPistolBoughtBurstfire, nil) end
---if onplayer_pistol_toggle_burstfire_handle == nil then onplayer_pistol_toggle_burstfire_handle=ListenToGameEvent("player_pistol_toggle_burstfire",OnPlayerPistolToggleBurstfire, nil) end
---if onplayer_pistol_pickedup_charged_clip_handle == nil then onplayer_pistol_pickedup_charged_clip_handle=ListenToGameEvent("player_pistol_pickedup_charged_clip",OnPlayerPistolPickedupChargedClip, nil) end
---if onplayer_pistol_armed_charged_clip_handle == nil then onplayer_pistol_armed_charged_clip_handle=ListenToGameEvent("player_pistol_armed_charged_clip",OnPlayerPistolArmedChargedClip, nil) end
---if onplayer_pistol_clip_charge_ended_handle == nil then onplayer_pistol_clip_charge_ended_handle=ListenToGameEvent("player_pistol_clip_charge_ended",OnPlayerPistolClipChargeEnded, nil) end
-if onplayer_retrieved_backpack_clip_handle == nil then onplayer_retrieved_backpack_clip_handle=ListenToGameEvent("player_retrieved_backpack_clip",OnPlayerRetrievedBackpackClip, nil) end
-if onplayer_drop_ammo_in_backpack_handle == nil then onplayer_drop_ammo_in_backpack_handle=ListenToGameEvent("player_drop_ammo_in_backpack",OnPlayerDropAmmoInBackpack, nil) end
-if onplayer_drop_resin_in_backpack_handle == nil then onplayer_drop_resin_in_backpack_handle=ListenToGameEvent("player_drop_resin_in_backpack",OnPlayerDropResinInBackpack, nil) end
-if onplayer_using_healthstation_handle == nil then onplayer_using_healthstation_handle=ListenToGameEvent("player_using_healthstation",OnPlayerUsingHealthstation, nil) end
---if onhealth_station_open_handle == nil then onhealth_station_open_handle=ListenToGameEvent("health_station_open",OnHealthStationOpen, nil) end
-if onplayer_shotgun_shell_loaded_handle == nil then onplayer_shotgun_shell_loaded_handle=ListenToGameEvent("player_shotgun_shell_loaded",OnPlayerShotgunShellLoaded, nil) end
---if onplayer_shotgun_state_changed_handle == nil then onplayer_shotgun_state_changed_handle=ListenToGameEvent("player_shotgun_state_changed",OnPlayerShotgunStateChanged, nil) end
-if onplayer_shotgun_upgrade_grenade_launcher_state_handle == nil then onplayer_shotgun_upgrade_grenade_launcher_state_handle=ListenToGameEvent("player_shotgun_upgrade_grenade_launcher_state",OnPlayerShotgunUpgradeGrenadeLauncherState, nil) end
-if onplayer_shotgun_autoloader_state_handle == nil then onplayer_shotgun_autoloader_state_handle=ListenToGameEvent("player_shotgun_autoloader_state",OnPlayerShotgunAutoloaderState, nil) end
-if onplayer_shotgun_autoloader_shells_added_handle == nil then onplayer_shotgun_autoloader_shells_added_handle=ListenToGameEvent("player_shotgun_autoloader_shells_added",OnPlayerShotgunAutoloaderShellsAdded, nil) end
-if onplayer_shotgun_upgrade_quickfire_handle == nil then onplayer_shotgun_upgrade_quickfire_handle=ListenToGameEvent("player_shotgun_upgrade_quickfire",OnPlayerShotgunUpgradeQuickfire, nil) end
---if onplayer_shotgun_is_ready_handle == nil then onplayer_shotgun_is_ready_handle=ListenToGameEvent("player_shotgun_is_ready",OnPlayerShotgunIsReady, nil) end
---if onplayer_shotgun_open_handle == nil then onplayer_shotgun_open_handle=ListenToGameEvent("player_shotgun_open",OnPlayerShotgunOpen, nil) end
-if onplayer_shotgun_loaded_shells_handle == nil then onplayer_shotgun_loaded_shells_handle=ListenToGameEvent("player_shotgun_loaded_shells",OnPlayerShotgunLoadedShells, nil) end
---if onplayer_shotgun_upgrade_grenade_long_handle == nil then onplayer_shotgun_upgrade_grenade_long_handle=ListenToGameEvent("player_shotgun_upgrade_grenade_long",OnPlayerShotgunUpgradeGrenadeLong, nil) end
---if onplayer_rapidfire_capsule_chamber_empty_handle == nil then onplayer_rapidfire_capsule_chamber_empty_handle=ListenToGameEvent("player_rapidfire_capsule_chamber_empty",OnPlayerRapidfireCapsuleChamberEmpty, nil) end
---if onplayer_rapidfire_cycled_capsule_handle == nil then onplayer_rapidfire_cycled_capsule_handle=ListenToGameEvent("player_rapidfire_cycled_capsule",OnPlayerRapidfireCycledCapsule, nil) end
---if onplayer_rapidfire_magazine_empty_handle == nil then onplayer_rapidfire_magazine_empty_handle=ListenToGameEvent("player_rapidfire_magazine_empty",OnPlayerRapidfireMagazineEmpty, nil) end
-if onplayer_rapidfire_opened_casing_handle == nil then onplayer_rapidfire_opened_casing_handle=ListenToGameEvent("player_rapidfire_opened_casing",OnPlayerRapidfireOpenedCasing, nil) end
-if onplayer_rapidfire_closed_casing_handle == nil then onplayer_rapidfire_closed_casing_handle=ListenToGameEvent("player_rapidfire_closed_casing",OnPlayerRapidfireClosedCasing, nil) end
-if onplayer_rapidfire_inserted_capsule_in_chamber_handle == nil then onplayer_rapidfire_inserted_capsule_in_chamber_handle=ListenToGameEvent("player_rapidfire_inserted_capsule_in_chamber",OnPlayerRapidfireInsertedCapsuleInChamber, nil) end
-if onplayer_rapidfire_inserted_capsule_in_magazine_handle == nil then onplayer_rapidfire_inserted_capsule_in_magazine_handle=ListenToGameEvent("player_rapidfire_inserted_capsule_in_magazine",OnPlayerRapidfireInsertedCapsuleInMagazine, nil) end
---if onplayer_rapidfire_upgrade_selector_can_use_handle == nil then onplayer_rapidfire_upgrade_selector_can_use_handle=ListenToGameEvent("player_rapidfire_upgrade_selector_can_use",OnPlayerRapidfireUpgradeSelectorCanUse, nil) end
---if onplayer_rapidfire_upgrade_selector_used_handle == nil then onplayer_rapidfire_upgrade_selector_used_handle=ListenToGameEvent("player_rapidfire_upgrade_selector_used",OnPlayerRapidfireUpgradeSelectorUsed, nil) end
---if onplayer_rapidfire_upgrade_can_charge_handle == nil then onplayer_rapidfire_upgrade_can_charge_handle=ListenToGameEvent("player_rapidfire_upgrade_can_charge",OnPlayerRapidfireUpgradeCanCharge, nil) end
---if onplayer_rapidfire_upgrade_can_not_charge_handle == nil then onplayer_rapidfire_upgrade_can_not_charge_handle=ListenToGameEvent("player_rapidfire_upgrade_can_not_charge",OnPlayerRapidfireUpgradeCanNotCharge, nil) end
---if onplayer_rapidfire_upgrade_fully_charged_handle == nil then onplayer_rapidfire_upgrade_fully_charged_handle=ListenToGameEvent("player_rapidfire_upgrade_fully_charged",OnPlayerRapidfireUpgradeFullyCharged, nil) end
---if onplayer_rapidfire_upgrade_not_fully_charged_handle == nil then onplayer_rapidfire_upgrade_not_fully_charged_handle=ListenToGameEvent("player_rapidfire_upgrade_not_fully_charged",OnPlayerRapidfireUpgradeNotFullyCharged, nil) end
-if onplayer_rapidfire_upgrade_fired_handle == nil then onplayer_rapidfire_upgrade_fired_handle=ListenToGameEvent("player_rapidfire_upgrade_fired",OnPlayerRapidfireUpgradeFired, nil) end
---if onplayer_rapidfire_energy_ball_can_charge_handle == nil then onplayer_rapidfire_energy_ball_can_charge_handle=ListenToGameEvent("player_rapidfire_energy_ball_can_charge",OnPlayerRapidfireEnergyBallCanCharge, nil) end
---if onplayer_rapidfire_energy_ball_fully_charged_handle == nil then onplayer_rapidfire_energy_ball_fully_charged_handle=ListenToGameEvent("player_rapidfire_energy_ball_fully_charged",OnPlayerRapidfireEnergyBallFullyCharged, nil) end
---if onplayer_rapidfire_energy_ball_not_fully_charged_handle == nil then onplayer_rapidfire_energy_ball_not_fully_charged_handle=ListenToGameEvent("player_rapidfire_energy_ball_not_fully_charged",OnPlayerRapidfireEnergyBallNotFullyCharged, nil) end
---if onplayer_rapidfire_energy_ball_can_pick_up_handle == nil then onplayer_rapidfire_energy_ball_can_pick_up_handle=ListenToGameEvent("player_rapidfire_energy_ball_can_pick_up",OnPlayerRapidfireEnergyBallCanPickUp, nil) end
---if onplayer_rapidfire_energy_ball_picked_up_handle == nil then onplayer_rapidfire_energy_ball_picked_up_handle=ListenToGameEvent("player_rapidfire_energy_ball_picked_up",OnPlayerRapidfireEnergyBallPickedUp, nil) end
---if onplayer_rapidfire_stun_grenade_ready_handle == nil then onplayer_rapidfire_stun_grenade_ready_handle=ListenToGameEvent("player_rapidfire_stun_grenade_ready",OnPlayerRapidfireStunGrenadeReady, nil) end
---if onplayer_rapidfire_stun_grenade_not_ready_handle == nil then onplayer_rapidfire_stun_grenade_not_ready_handle=ListenToGameEvent("player_rapidfire_stun_grenade_not_ready",OnPlayerRapidfireStunGrenadeNotReady, nil) end
---if onplayer_rapidfire_stun_grenade_picked_up_handle == nil then onplayer_rapidfire_stun_grenade_picked_up_handle=ListenToGameEvent("player_rapidfire_stun_grenade_picked_up",OnPlayerRapidfireStunGrenadePickedUp, nil) end
---if onplayer_rapidfire_explode_button_ready_handle == nil then onplayer_rapidfire_explode_button_ready_handle=ListenToGameEvent("player_rapidfire_explode_button_ready",OnPlayerRapidfireExplodeButtonReady, nil) end
---if onplayer_rapidfire_explode_button_not_ready_handle == nil then onplayer_rapidfire_explode_button_not_ready_handle=ListenToGameEvent("player_rapidfire_explode_button_not_ready",OnPlayerRapidfireExplodeButtonNotReady, nil) end
-if onplayer_rapidfire_explode_button_pressed_handle == nil then onplayer_rapidfire_explode_button_pressed_handle=ListenToGameEvent("player_rapidfire_explode_button_pressed",OnPlayerRapidfireExplodeButtonPressed, nil) end
-if onplayer_started_2h_levitate_handle == nil then onplayer_started_2h_levitate_handle=ListenToGameEvent("player_started_2h_levitate",OnPlayerStarted2hLevitate, nil) end
-if onplayer_stored_item_in_itemholder_handle == nil then onplayer_stored_item_in_itemholder_handle=ListenToGameEvent("player_stored_item_in_itemholder",OnPlayerStoredItemInItemholder, nil) end
-if onplayer_removed_item_from_itemholder_handle == nil then onplayer_removed_item_from_itemholder_handle=ListenToGameEvent("player_removed_item_from_itemholder",OnPlayerRemovedItemFromItemholder, nil) end
---if onplayer_attached_flashlight_handle == nil then onplayer_attached_flashlight_handle=ListenToGameEvent("player_attached_flashlight",OnPlayerAttachedFlashlight, nil) end
-if onhealth_pen_teach_storage_handle == nil then onhealth_pen_teach_storage_handle=ListenToGameEvent("health_pen_teach_storage",OnHealthPenTeachStorage, nil) end
-if onhealth_vial_teach_storage_handle == nil then onhealth_vial_teach_storage_handle=ListenToGameEvent("health_vial_teach_storage",OnHealthVialTeachStorage, nil) end
---if onplayer_pickedup_storable_clip_handle == nil then onplayer_pickedup_storable_clip_handle=ListenToGameEvent("player_pickedup_storable_clip",OnPlayerPickedupStorableClip, nil) end
---if onplayer_pickedup_insertable_clip_handle == nil then onplayer_pickedup_insertable_clip_handle=ListenToGameEvent("player_pickedup_insertable_clip",OnPlayerPickedupInsertableClip, nil) end
-if onplayer_covered_mouth_handle == nil then onplayer_covered_mouth_handle=ListenToGameEvent("player_covered_mouth",OnPlayerCoveredMouth, nil) end
---if onplayer_upgraded_weapon_handle == nil then onplayer_upgraded_weapon_handle=ListenToGameEvent("player_upgraded_weapon",OnPlayerUpgradedWeapon, nil) end
-if ontripmine_hack_started_handle == nil then ontripmine_hack_started_handle=ListenToGameEvent("tripmine_hack_started",OnTripmineHackStarted, nil) end
-if ontripmine_hacked_handle == nil then ontripmine_hacked_handle=ListenToGameEvent("tripmine_hacked",OnTripmineHacked, nil) end
-if onprimary_hand_changed_handle == nil then onprimary_hand_changed_handle=ListenToGameEvent("primary_hand_changed",OnPrimaryHandChanged, nil) end
-if onsingle_controller_mode_changed_handle == nil then onsingle_controller_mode_changed_handle=ListenToGameEvent("single_controller_mode_changed",OnSingleControllerModeChanged, nil) end
-if onmovement_hand_changed_handle == nil then onmovement_hand_changed_handle=ListenToGameEvent("movement_hand_changed",OnMovementHandChanged, nil) end
-if oncombine_tank_moved_by_player_handle == nil then oncombine_tank_moved_by_player_handle=ListenToGameEvent("combine_tank_moved_by_player",OnCombineTankMovedByPlayer, nil) end
-if onplayer_continuous_jump_finish_handle == nil then onplayer_continuous_jump_finish_handle=ListenToGameEvent("player_continuous_jump_finish",OnPlayerContinuousJumpFinish, nil) end
-if onplayer_continuous_mantle_finish_handle == nil then onplayer_continuous_mantle_finish_handle=ListenToGameEvent("player_continuous_mantle_finish",OnPlayerContinuousMantleFinish, nil) end
-if onplayer_grabbed_ladder_handle == nil then onplayer_grabbed_ladder_handle=ListenToGameEvent("player_grabbed_ladder",OnPlayerGrabbedLadder, nil) end
+if onitem_pickup_event == nil then onitem_pickup_event=ListenToGameEvent("item_pickup",OnItemPickup, nil) end
+if onitem_released_event == nil then onitem_released_event=ListenToGameEvent("item_released",OnItemReleased, nil) end
+if onweapon_switch_event == nil then onweapon_switch_event=ListenToGameEvent("weapon_switch",OnWeaponSwitch, nil) end
+if ongrabbity_glove_pull_event == nil then ongrabbity_glove_pull_event=ListenToGameEvent("grabbity_glove_pull",OnGrabbityGlovePull, nil) end
+if ongrabbity_glove_catch_event == nil then ongrabbity_glove_catch_event=ListenToGameEvent("grabbity_glove_catch",OnGrabbityGloveCatch, nil) end
+if ongrabbity_glove_locked_on_start_event == nil then ongrabbity_glove_locked_on_start_event=ListenToGameEvent("grabbity_glove_locked_on_start",OnGrabbityGloveLockedOnStart, nil) end
+if ongrabbity_glove_locked_on_stop_event == nil then ongrabbity_glove_locked_on_stop_event=ListenToGameEvent("grabbity_glove_locked_on_stop",OnGrabbityGloveLockedOnStop, nil) end
+--if onplayer_gestured_event == nil then onplayer_gestured_event=ListenToGameEvent("player_gestured",OnPlayerGestured, nil) end
+if onplayer_picked_up_weapon_off_hand_event == nil then onplayer_picked_up_weapon_off_hand_event=ListenToGameEvent("player_picked_up_weapon_off_hand",OnPlayerPickedUpWeaponOffHand, nil) end
+if onplayer_picked_up_weapon_off_hand_crafting_event == nil then onplayer_picked_up_weapon_off_hand_crafting_event=ListenToGameEvent("player_picked_up_weapon_off_hand_crafting",OnPlayerPickedUpWeaponOffHandCrafting, nil) end
+--if onplayer_eject_clip_event == nil then onplayer_eject_clip_event=ListenToGameEvent("player_eject_clip",OnPlayerEjectClip, nil) end
+--if onplayer_armed_grenade_event == nil then onplayer_armed_grenade_event=ListenToGameEvent("player_armed_grenade",OnPlayerArmedGrenade, nil) end
+--if onplayer_health_pen_prepare_event == nil then onplayer_health_pen_prepare_event=ListenToGameEvent("player_health_pen_prepare",OnPlayerHealthPenPrepare, nil) end
+--if onplayer_health_pen_retract_event == nil then onplayer_health_pen_retract_event=ListenToGameEvent("player_health_pen_retract",OnPlayerHealthPenRetract, nil) end
+if onplayer_health_pen_used_event == nil then onplayer_health_pen_used_event=ListenToGameEvent("player_health_pen_used",OnPlayerHealthPenUsed, nil) end
+if onplayer_pistol_clip_inserted_event == nil then onplayer_pistol_clip_inserted_event=ListenToGameEvent("player_pistol_clip_inserted",OnPlayerPistolClipInserted, nil) end
+--if onplayer_pistol_empty_chamber_event == nil then onplayer_pistol_empty_chamber_event=ListenToGameEvent("player_pistol_empty_chamber",OnPlayerPistolEmptyChamber, nil) end
+if onplayer_pistol_chambered_round_event == nil then onplayer_pistol_chambered_round_event=ListenToGameEvent("player_pistol_chambered_round",OnPlayerPistolChamberedRound, nil) end
+--if onplayer_pistol_slide_lock_event == nil then onplayer_pistol_slide_lock_event=ListenToGameEvent("player_pistol_slide_lock",OnPlayerPistolSlideLock, nil) end
+--if onplayer_pistol_bought_lasersight_event == nil then onplayer_pistol_bought_lasersight_event=ListenToGameEvent("player_pistol_bought_lasersight",OnPlayerPistolBoughtLasersight, nil) end
+--if onplayer_pistol_toggle_lasersight_event == nil then onplayer_pistol_toggle_lasersight_event=ListenToGameEvent("player_pistol_toggle_lasersight",OnPlayerPistolToggleLasersight, nil) end
+--if onplayer_pistol_bought_burstfire_event == nil then onplayer_pistol_bought_burstfire_event=ListenToGameEvent("player_pistol_bought_burstfire",OnPlayerPistolBoughtBurstfire, nil) end
+--if onplayer_pistol_toggle_burstfire_event == nil then onplayer_pistol_toggle_burstfire_event=ListenToGameEvent("player_pistol_toggle_burstfire",OnPlayerPistolToggleBurstfire, nil) end
+--if onplayer_pistol_pickedup_charged_clip_event == nil then onplayer_pistol_pickedup_charged_clip_event=ListenToGameEvent("player_pistol_pickedup_charged_clip",OnPlayerPistolPickedupChargedClip, nil) end
+--if onplayer_pistol_armed_charged_clip_event == nil then onplayer_pistol_armed_charged_clip_event=ListenToGameEvent("player_pistol_armed_charged_clip",OnPlayerPistolArmedChargedClip, nil) end
+--if onplayer_pistol_clip_charge_ended_event == nil then onplayer_pistol_clip_charge_ended_event=ListenToGameEvent("player_pistol_clip_charge_ended",OnPlayerPistolClipChargeEnded, nil) end
+if onplayer_retrieved_backpack_clip_event == nil then onplayer_retrieved_backpack_clip_event=ListenToGameEvent("player_retrieved_backpack_clip",OnPlayerRetrievedBackpackClip, nil) end
+if onplayer_drop_ammo_in_backpack_event == nil then onplayer_drop_ammo_in_backpack_event=ListenToGameEvent("player_drop_ammo_in_backpack",OnPlayerDropAmmoInBackpack, nil) end
+if onplayer_drop_resin_in_backpack_event == nil then onplayer_drop_resin_in_backpack_event=ListenToGameEvent("player_drop_resin_in_backpack",OnPlayerDropResinInBackpack, nil) end
+if onplayer_using_healthstation_event == nil then onplayer_using_healthstation_event=ListenToGameEvent("player_using_healthstation",OnPlayerUsingHealthstation, nil) end
+--if onhealth_station_open_event == nil then onhealth_station_open_event=ListenToGameEvent("health_station_open",OnHealthStationOpen, nil) end
+if onplayer_shotgun_shell_loaded_event == nil then onplayer_shotgun_shell_loaded_event=ListenToGameEvent("player_shotgun_shell_loaded",OnPlayerShotgunShellLoaded, nil) end
+--if onplayer_shotgun_state_changed_event == nil then onplayer_shotgun_state_changed_event=ListenToGameEvent("player_shotgun_state_changed",OnPlayerShotgunStateChanged, nil) end
+if onplayer_shotgun_upgrade_grenade_launcher_state_event == nil then onplayer_shotgun_upgrade_grenade_launcher_state_event=ListenToGameEvent("player_shotgun_upgrade_grenade_launcher_state",OnPlayerShotgunUpgradeGrenadeLauncherState, nil) end
+if onplayer_shotgun_autoloader_state_event == nil then onplayer_shotgun_autoloader_state_event=ListenToGameEvent("player_shotgun_autoloader_state",OnPlayerShotgunAutoloaderState, nil) end
+if onplayer_shotgun_autoloader_shells_added_event == nil then onplayer_shotgun_autoloader_shells_added_event=ListenToGameEvent("player_shotgun_autoloader_shells_added",OnPlayerShotgunAutoloaderShellsAdded, nil) end
+if onplayer_shotgun_upgrade_quickfire_event == nil then onplayer_shotgun_upgrade_quickfire_event=ListenToGameEvent("player_shotgun_upgrade_quickfire",OnPlayerShotgunUpgradeQuickfire, nil) end
+--if onplayer_shotgun_is_ready_event == nil then onplayer_shotgun_is_ready_event=ListenToGameEvent("player_shotgun_is_ready",OnPlayerShotgunIsReady, nil) end
+--if onplayer_shotgun_open_event == nil then onplayer_shotgun_open_event=ListenToGameEvent("player_shotgun_open",OnPlayerShotgunOpen, nil) end
+if onplayer_shotgun_loaded_shells_event == nil then onplayer_shotgun_loaded_shells_event=ListenToGameEvent("player_shotgun_loaded_shells",OnPlayerShotgunLoadedShells, nil) end
+--if onplayer_shotgun_upgrade_grenade_long_event == nil then onplayer_shotgun_upgrade_grenade_long_event=ListenToGameEvent("player_shotgun_upgrade_grenade_long",OnPlayerShotgunUpgradeGrenadeLong, nil) end
+--if onplayer_rapidfire_capsule_chamber_empty_event == nil then onplayer_rapidfire_capsule_chamber_empty_event=ListenToGameEvent("player_rapidfire_capsule_chamber_empty",OnPlayerRapidfireCapsuleChamberEmpty, nil) end
+--if onplayer_rapidfire_cycled_capsule_event == nil then onplayer_rapidfire_cycled_capsule_event=ListenToGameEvent("player_rapidfire_cycled_capsule",OnPlayerRapidfireCycledCapsule, nil) end
+--if onplayer_rapidfire_magazine_empty_event == nil then onplayer_rapidfire_magazine_empty_event=ListenToGameEvent("player_rapidfire_magazine_empty",OnPlayerRapidfireMagazineEmpty, nil) end
+if onplayer_rapidfire_opened_casing_event == nil then onplayer_rapidfire_opened_casing_event=ListenToGameEvent("player_rapidfire_opened_casing",OnPlayerRapidfireOpenedCasing, nil) end
+if onplayer_rapidfire_closed_casing_event == nil then onplayer_rapidfire_closed_casing_event=ListenToGameEvent("player_rapidfire_closed_casing",OnPlayerRapidfireClosedCasing, nil) end
+if onplayer_rapidfire_inserted_capsule_in_chamber_event == nil then onplayer_rapidfire_inserted_capsule_in_chamber_event=ListenToGameEvent("player_rapidfire_inserted_capsule_in_chamber",OnPlayerRapidfireInsertedCapsuleInChamber, nil) end
+if onplayer_rapidfire_inserted_capsule_in_magazine_event == nil then onplayer_rapidfire_inserted_capsule_in_magazine_event=ListenToGameEvent("player_rapidfire_inserted_capsule_in_magazine",OnPlayerRapidfireInsertedCapsuleInMagazine, nil) end
+--if onplayer_rapidfire_upgrade_selector_can_use_event == nil then onplayer_rapidfire_upgrade_selector_can_use_event=ListenToGameEvent("player_rapidfire_upgrade_selector_can_use",OnPlayerRapidfireUpgradeSelectorCanUse, nil) end
+--if onplayer_rapidfire_upgrade_selector_used_event == nil then onplayer_rapidfire_upgrade_selector_used_event=ListenToGameEvent("player_rapidfire_upgrade_selector_used",OnPlayerRapidfireUpgradeSelectorUsed, nil) end
+--if onplayer_rapidfire_upgrade_can_charge_event == nil then onplayer_rapidfire_upgrade_can_charge_event=ListenToGameEvent("player_rapidfire_upgrade_can_charge",OnPlayerRapidfireUpgradeCanCharge, nil) end
+--if onplayer_rapidfire_upgrade_can_not_charge_event == nil then onplayer_rapidfire_upgrade_can_not_charge_event=ListenToGameEvent("player_rapidfire_upgrade_can_not_charge",OnPlayerRapidfireUpgradeCanNotCharge, nil) end
+--if onplayer_rapidfire_upgrade_fully_charged_event == nil then onplayer_rapidfire_upgrade_fully_charged_event=ListenToGameEvent("player_rapidfire_upgrade_fully_charged",OnPlayerRapidfireUpgradeFullyCharged, nil) end
+--if onplayer_rapidfire_upgrade_not_fully_charged_event == nil then onplayer_rapidfire_upgrade_not_fully_charged_event=ListenToGameEvent("player_rapidfire_upgrade_not_fully_charged",OnPlayerRapidfireUpgradeNotFullyCharged, nil) end
+if onplayer_rapidfire_upgrade_fired_event == nil then onplayer_rapidfire_upgrade_fired_event=ListenToGameEvent("player_rapidfire_upgrade_fired",OnPlayerRapidfireUpgradeFired, nil) end
+--if onplayer_rapidfire_energy_ball_can_charge_event == nil then onplayer_rapidfire_energy_ball_can_charge_event=ListenToGameEvent("player_rapidfire_energy_ball_can_charge",OnPlayerRapidfireEnergyBallCanCharge, nil) end
+--if onplayer_rapidfire_energy_ball_fully_charged_event == nil then onplayer_rapidfire_energy_ball_fully_charged_event=ListenToGameEvent("player_rapidfire_energy_ball_fully_charged",OnPlayerRapidfireEnergyBallFullyCharged, nil) end
+--if onplayer_rapidfire_energy_ball_not_fully_charged_event == nil then onplayer_rapidfire_energy_ball_not_fully_charged_event=ListenToGameEvent("player_rapidfire_energy_ball_not_fully_charged",OnPlayerRapidfireEnergyBallNotFullyCharged, nil) end
+--if onplayer_rapidfire_energy_ball_can_pick_up_event == nil then onplayer_rapidfire_energy_ball_can_pick_up_event=ListenToGameEvent("player_rapidfire_energy_ball_can_pick_up",OnPlayerRapidfireEnergyBallCanPickUp, nil) end
+--if onplayer_rapidfire_energy_ball_picked_up_event == nil then onplayer_rapidfire_energy_ball_picked_up_event=ListenToGameEvent("player_rapidfire_energy_ball_picked_up",OnPlayerRapidfireEnergyBallPickedUp, nil) end
+--if onplayer_rapidfire_stun_grenade_ready_event == nil then onplayer_rapidfire_stun_grenade_ready_event=ListenToGameEvent("player_rapidfire_stun_grenade_ready",OnPlayerRapidfireStunGrenadeReady, nil) end
+--if onplayer_rapidfire_stun_grenade_not_ready_event == nil then onplayer_rapidfire_stun_grenade_not_ready_event=ListenToGameEvent("player_rapidfire_stun_grenade_not_ready",OnPlayerRapidfireStunGrenadeNotReady, nil) end
+--if onplayer_rapidfire_stun_grenade_picked_up_event == nil then onplayer_rapidfire_stun_grenade_picked_up_event=ListenToGameEvent("player_rapidfire_stun_grenade_picked_up",OnPlayerRapidfireStunGrenadePickedUp, nil) end
+--if onplayer_rapidfire_explode_button_ready_event == nil then onplayer_rapidfire_explode_button_ready_event=ListenToGameEvent("player_rapidfire_explode_button_ready",OnPlayerRapidfireExplodeButtonReady, nil) end
+--if onplayer_rapidfire_explode_button_not_ready_event == nil then onplayer_rapidfire_explode_button_not_ready_event=ListenToGameEvent("player_rapidfire_explode_button_not_ready",OnPlayerRapidfireExplodeButtonNotReady, nil) end
+if onplayer_rapidfire_explode_button_pressed_event == nil then onplayer_rapidfire_explode_button_pressed_event=ListenToGameEvent("player_rapidfire_explode_button_pressed",OnPlayerRapidfireExplodeButtonPressed, nil) end
+if onplayer_started_2h_levitate_event == nil then onplayer_started_2h_levitate_event=ListenToGameEvent("player_started_2h_levitate",OnPlayerStarted2hLevitate, nil) end
+if onplayer_stored_item_in_itemholder_event == nil then onplayer_stored_item_in_itemholder_event=ListenToGameEvent("player_stored_item_in_itemholder",OnPlayerStoredItemInItemholder, nil) end
+if onplayer_removed_item_from_itemholder_event == nil then onplayer_removed_item_from_itemholder_event=ListenToGameEvent("player_removed_item_from_itemholder",OnPlayerRemovedItemFromItemholder, nil) end
+--if onplayer_attached_flashlight_event == nil then onplayer_attached_flashlight_event=ListenToGameEvent("player_attached_flashlight",OnPlayerAttachedFlashlight, nil) end
+if onhealth_pen_teach_storage_event == nil then onhealth_pen_teach_storage_event=ListenToGameEvent("health_pen_teach_storage",OnHealthPenTeachStorage, nil) end
+if onhealth_vial_teach_storage_event == nil then onhealth_vial_teach_storage_event=ListenToGameEvent("health_vial_teach_storage",OnHealthVialTeachStorage, nil) end
+--if onplayer_pickedup_storable_clip_event == nil then onplayer_pickedup_storable_clip_event=ListenToGameEvent("player_pickedup_storable_clip",OnPlayerPickedupStorableClip, nil) end
+--if onplayer_pickedup_insertable_clip_event == nil then onplayer_pickedup_insertable_clip_event=ListenToGameEvent("player_pickedup_insertable_clip",OnPlayerPickedupInsertableClip, nil) end
+if onplayer_covered_mouth_event == nil then onplayer_covered_mouth_event=ListenToGameEvent("player_covered_mouth",OnPlayerCoveredMouth, nil) end
+--if onplayer_upgraded_weapon_event == nil then onplayer_upgraded_weapon_event=ListenToGameEvent("player_upgraded_weapon",OnPlayerUpgradedWeapon, nil) end
+if ontripmine_hack_started_event == nil then ontripmine_hack_started_event=ListenToGameEvent("tripmine_hack_started",OnTripmineHackStarted, nil) end
+if ontripmine_hacked_event == nil then ontripmine_hacked_event=ListenToGameEvent("tripmine_hacked",OnTripmineHacked, nil) end
+if onprimary_hand_changed_event == nil then onprimary_hand_changed_event=ListenToGameEvent("primary_hand_changed",OnPrimaryHandChanged, nil) end
+if onsingle_controller_mode_changed_event == nil then onsingle_controller_mode_changed_event=ListenToGameEvent("single_controller_mode_changed",OnSingleControllerModeChanged, nil) end
+if onmovement_hand_changed_event == nil then onmovement_hand_changed_event=ListenToGameEvent("movement_hand_changed",OnMovementHandChanged, nil) end
+if oncombine_tank_moved_by_player_event == nil then oncombine_tank_moved_by_player_event=ListenToGameEvent("combine_tank_moved_by_player",OnCombineTankMovedByPlayer, nil) end
+if onplayer_continuous_jump_finish_event == nil then onplayer_continuous_jump_finish_event=ListenToGameEvent("player_continuous_jump_finish",OnPlayerContinuousJumpFinish, nil) end
+if onplayer_continuous_mantle_finish_event == nil then onplayer_continuous_mantle_finish_event=ListenToGameEvent("player_continuous_mantle_finish",OnPlayerContinuousMantleFinish, nil) end
+if onplayer_grabbed_ladder_event == nil then onplayer_grabbed_ladder_event=ListenToGameEvent("player_grabbed_ladder",OnPlayerGrabbedLadder, nil) end
 
-if ontwo_hand_pistol_grab_start_handle == nil then ontwo_hand_pistol_grab_start_handle=ListenToGameEvent("two_hand_pistol_grab_start",OnTwoHandStart, nil) end
-if ontwo_hand_pistol_grab_end_handle == nil then ontwo_hand_pistol_grab_end_handle=ListenToGameEvent("two_hand_pistol_grab_end",OnTwoHandEnd, nil) end
-if ontwo_hand_rapidfire_grab_start_handle == nil then ontwo_hand_rapidfire_grab_start_handle=ListenToGameEvent("two_hand_rapidfire_grab_start",OnTwoHandStart, nil) end
-if ontwo_hand_rapidfire_grab_end_handle == nil then ontwo_hand_rapidfire_grab_end_handle=ListenToGameEvent("two_hand_rapidfire_grab_end",OnTwoHandEnd, nil) end
-if ontwo_hand_shotgun_grab_start_handle == nil then ontwo_hand_shotgun_grab_start_handle=ListenToGameEvent("two_hand_shotgun_grab_start",OnTwoHandStart, nil) end
-if ontwo_hand_shotgun_grab_end_handle == nil then ontwo_hand_shotgun_grab_end_handle=ListenToGameEvent("two_hand_shotgun_grab_end",OnTwoHandEnd, nil) end
+if ontwo_hand_pistol_grab_start_event == nil then ontwo_hand_pistol_grab_start_event=ListenToGameEvent("two_hand_pistol_grab_start",OnTwoHandStart, nil) end
+if ontwo_hand_pistol_grab_end_event == nil then ontwo_hand_pistol_grab_end_event=ListenToGameEvent("two_hand_pistol_grab_end",OnTwoHandEnd, nil) end
+if ontwo_hand_rapidfire_grab_start_event == nil then ontwo_hand_rapidfire_grab_start_event=ListenToGameEvent("two_hand_rapidfire_grab_start",OnTwoHandStart, nil) end
+if ontwo_hand_rapidfire_grab_end_event == nil then ontwo_hand_rapidfire_grab_end_event=ListenToGameEvent("two_hand_rapidfire_grab_end",OnTwoHandEnd, nil) end
+if ontwo_hand_shotgun_grab_start_event == nil then ontwo_hand_shotgun_grab_start_event=ListenToGameEvent("two_hand_shotgun_grab_start",OnTwoHandStart, nil) end
+if ontwo_hand_shotgun_grab_end_event == nil then ontwo_hand_shotgun_grab_end_event=ListenToGameEvent("two_hand_shotgun_grab_end",OnTwoHandEnd, nil) end
 
 
   lastWeapon = "unknown"
@@ -1164,12 +1162,12 @@ if ontwo_hand_shotgun_grab_end_handle == nil then ontwo_hand_shotgun_grab_end_ha
 
 else
 
-  if onplayer_opened_game_menu_handle ~= nil then
-    StopListeningToGameEvent(	onplayer_opened_game_menu_handle	)
-    StopListeningToGameEvent(	onplayer_closed_game_menu_handle	)
+  if onplayer_opened_game_menu_event ~= nil then
+    StopListeningToGameEvent(	onplayer_opened_game_menu_event	)
+    StopListeningToGameEvent(	onplayer_closed_game_menu_event	)
   end
 
-  if onplayer_opened_game_menu_handle == nil then onplayer_opened_game_menu_handle=ListenToGameEvent("player_opened_game_menu",OnPlayerOpenedGameMenu, nil) end
-  if onplayer_closed_game_menu_handle == nil then onplayer_closed_game_menu_handle=ListenToGameEvent("player_closed_game_menu",OnPlayerClosedGameMenu, nil) end
+  if onplayer_opened_game_menu_event == nil then onplayer_opened_game_menu_event=ListenToGameEvent("player_opened_game_menu",OnPlayerOpenedGameMenu, nil) end
+  if onplayer_closed_game_menu_event == nil then onplayer_closed_game_menu_event=ListenToGameEvent("player_closed_game_menu",OnPlayerClosedGameMenu, nil) end
 
 end
