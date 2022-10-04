@@ -1,11 +1,11 @@
 Shockwave Suit mod for Half Life Alyx.
 
 <h1>Installation</h1>
-Manual Installation: Extract the contents of the Scripts rar file inside your ìSteam\steamapps\common\Half-Life Alyxî directory so that youíll have a vscripts folder like this: ìSteam\steamapps\common\Half-Life Alyx\game\hlvr\scripts\vscriptsî.
+Copy the contents of the "scripts" folder inside your ‚ÄúSteam\steamapps\common\Half-Life Alyx‚Äù directory so that you‚Äôll have a vscripts folder like this: ‚ÄúSteam\steamapps\common\Half-Life Alyx\game\hlvr\scripts\vscripts‚Äù.
 </br></br>
-Extract the contents of the Application rar file anywhere you want. Run ShockwaveAlyx.exe, set your Half-Life Alyx folder correctly and itís ready to be used. In the app, click "Connect" to have the suit connect. You can ensure that the connection is successful by clicking on the "Test haptics" button to send a haptic to your suit.
+Run ShockwaveAlyx.exe (in the "application" folder), set your Half-Life Alyx folder correctly and it‚Äôs ready to be used. In the app, click "Connect" to have the suit connect. You can ensure that the connection is successful by clicking on the "Test haptics" button to send a haptic to your suit.
 </br></br>
-You need to run the game via the "Launch game" button (or alternatively, add the `-condebug` Steam launch parameter and run it from Steam).
+You need to run the game via the "Launch game" button (or alternatively, add the "-condebug" Steam launch parameter and run it from Steam).
 
 <h1>Haptics list</h1>
 It includes haptics for the following events (most haptics are still pretty basic at the moment):
