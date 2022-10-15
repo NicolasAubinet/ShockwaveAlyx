@@ -101,12 +101,12 @@ namespace ShockwaveAlyx
             Task.Run(PlayerDeathFunc);
         }
 
-        private void PlayPattern(HapticGroupPattern hapticPattern, Func<bool> mustInterrupt = null)
+        private void PlayPattern(HapticGroupPattern hapticPattern)
         {
             Task.Run(() => _engine.PlayPattern(hapticPattern));
         }
 
-        private void PlayPattern(HapticIndexPattern hapticPattern, Func<bool> mustInterrupt = null)
+        private void PlayPattern(HapticIndexPattern hapticPattern)
         {
             Task.Run(() => _engine.PlayPattern(hapticPattern));
         }

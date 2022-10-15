@@ -7,8 +7,6 @@ namespace ShockwaveAlyx
 {
     public class ShockwaveEngine
     {
-        private readonly ShockwaveManager _instance;
-
         #region Mirror
         private static readonly int[,] VerticalMirror =
         {
@@ -59,18 +57,17 @@ namespace ShockwaveAlyx
 
         public ShockwaveEngine()
         {
-            _instance = ShockwaveManager.Instance;
-            _instance.enableBodyTracking = false;
+            ShockwaveManager.Instance.enableBodyTracking = false;
         }
 
         public void Connect()
         {
-            _instance.InitializeSuit();
+            ShockwaveManager.Instance.InitializeSuit();
         }
 
         public void Disconnect()
         {
-            _instance.DisconnectSuit();
+            ShockwaveManager.Instance.DisconnectSuit();
         }
 
         public async Task PlayPattern(HapticGroupPattern pattern, Func<bool> mustInterrupt = null)
