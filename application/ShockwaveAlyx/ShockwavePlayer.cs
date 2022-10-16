@@ -63,6 +63,14 @@ namespace ShockwaveAlyx
                 new[] { ShockwaveManager.HapticGroup.LEFT_LEG, ShockwaveManager.HapticGroup.RIGHT_LEG },
                 new[] { ShockwaveManager.HapticGroup.LEFT_LOWER_LEG, ShockwaveManager.HapticGroup.RIGHT_LOWER_LEG },
             };
+
+        ShockwaveManager.HapticGroup[][] LegsToShouldersGroups = {
+                new[] { ShockwaveManager.HapticGroup.LEFT_LOWER_LEG, ShockwaveManager.HapticGroup.RIGHT_LOWER_LEG },
+                new[] { ShockwaveManager.HapticGroup.LEFT_LEG, ShockwaveManager.HapticGroup.RIGHT_LEG },
+                new[] { ShockwaveManager.HapticGroup.WAIST, ShockwaveManager.HapticGroup.LEFT_FOREARM, ShockwaveManager.HapticGroup.RIGHT_FOREARM },
+                new[] { ShockwaveManager.HapticGroup.SPINE, ShockwaveManager.HapticGroup.LEFT_ARM, ShockwaveManager.HapticGroup.RIGHT_ARM },
+                new[] { ShockwaveManager.HapticGroup.CHEST, ShockwaveManager.HapticGroup.SHOULDERS },
+            };
         #endregion
 
         public ShockwavePlayer()
@@ -275,7 +283,7 @@ namespace ShockwaveAlyx
 
         private async void BarnacleGrabFunc()
         {
-            ShockwaveManager.HapticGroup[][] groups = ShouldersToLegsGroups;
+            ShockwaveManager.HapticGroup[][] groups = LegsToShouldersGroups;
             const int delay = 100;
 
             while (_barnacleGrab)
