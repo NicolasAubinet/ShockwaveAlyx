@@ -156,21 +156,56 @@ function OnPlayerHurt(dmginfo)
   local center = Entities:GetLocalPlayer():GetCenter()
   local angles = Entities:GetLocalPlayer():GetAngles()
 
+-- Disabled because attackerEntity is null
+--  local attackerEntity = PlayerInstanceFromIndex(dmginfo["attacker"])
+--  local attackerPosition = attackerEntity:getCenter()
+--  --local attackerDistance = getDistance(center, attackerPos)
+--  local attackerEntityClass = attackerEntity:GetClassname()
+--  local attackerEntityName = attackerEntity:GetName()
+--  local attackerEntityDebugName = attackerEntity:GetDebugName()
+--
+--  local playerAngle = angles.y
+--
+--  if playerAngle < 0 then
+--    playerAngle = (-1*playerAngle)+180    
+--  else 
+--     playerAngle = 180 - playerAngle    
+--  end
+--
+--  local angle = (((math.atan2(attackerPosition.y - center.y, attackerPosition.x - center.x) - math.atan2(1, 0)) * (180/math.pi))*-1) + 90
+--  if (angle < 0) then
+--		angle = angle + 360;
+--  end
+--
+--  angle = angle - playerAngle;
+--
+--  angle = 360 - angle
+--
+--  if angle < 0 then
+--    angle = angle + 360;
+--  elseif angle > 360 then
+--    angle = angle - 360;
+--  end
+--
+--  --Msg("Player angle: " .. tostring(playerAngle) .. " HeadingAngle: " .. tostring(angle) .. "\n")
+--
+--  WriteToFile("{PlayerHurt|" .. tostring(dmginfo["health"]) .. "|" .. tostring(attackerEntityClass) .. "|" .. tostring(math.floor(angle)) .. "|" .. tostring(attackerEntityName) .. "|" .. tostring(attackerEntityDebugName) .. "}\n")
+
   local closestDistance = 2500000000
   local closestEntityClass = "unknown"
   local closestEntityName = "unknown"
   local closestEntityDebugName = "unknown"
 
-
+  
   local closestPosition = center;
-
+  
   local allEntities = Entities:FindAllInSphere(center, 100000)
   for k,v in pairs(allEntities) do    
     local entpos = v:GetCenter()
     local dist = getDistance(center, entpos)
 
     if v:IsAlive() == true then
-
+     
       if has_value(enemyList, v:GetClassname()) or ( has_value(unarmedList, v:GetClassname()) and dist < 15000 ) or (starts_with(v:GetClassname(), "npc_antlion") and dist < 40000) or ((v:GetModelName() == nil or v:GetModelName() == "") and (string.match(v:GetClassname(), "item_hlvr_grenade") or string.match(v:GetClassname(), "npc_grenade") or string.match(v:GetClassname(), "npc_roller") or string.match(v:GetClassname(), "npc_concussiongrenade")) and dist < 50000) then 
         if dist < closestDistance then
           closestEntityClass = v:GetClassname()
@@ -182,41 +217,32 @@ function OnPlayerHurt(dmginfo)
       end        
     end
   end
-
---  local attackerEntity = PlayerInstanceFromIndex(dmginfo["attacker"])
---  local attackerPosition = attackerEntity:getCenter()
---  local attackerDistance = getDistance(center, attackerPos)
---  local attackerEntityClass = attackerEntity:GetClassname()
---  local attackerEntityName = attackerEntity:GetName()
---  local attackerEntityDebugName = attackerEntity:GetDebugName()
-
+  
   local playerAngle = angles.y
-
+  
   if playerAngle < 0 then
     playerAngle = (-1*playerAngle)+180    
   else 
      playerAngle = 180 - playerAngle    
   end
-
+    
   local angle = (((math.atan2(closestPosition.y - center.y, closestPosition.x - center.x) - math.atan2(1, 0)) * (180/math.pi))*-1) + 90
   if (angle < 0) then
 		angle = angle + 360;
   end
-
+  
   angle = angle - playerAngle;
-
+  
   angle = 360 - angle
-
+  
   if angle < 0 then
     angle = angle + 360;
   elseif angle > 360 then
     angle = angle - 360;
   end
-
-  --Msg("Player angle: " .. tostring(playerAngle) .. " HeadingAngle: " .. tostring(angle) .. "\n")
-
+  
   WriteToFile("{PlayerHurt|" .. tostring(dmginfo["health"]) .. "|" .. tostring(closestEntityClass) .. "|" .. tostring(math.floor(angle)) .. "|" .. tostring(closestEntityName) .. "|" .. tostring(closestEntityDebugName) .. "}\n")
-
+  
 end 
 
 
