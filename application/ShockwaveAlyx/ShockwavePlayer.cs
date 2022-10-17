@@ -184,29 +184,94 @@ namespace ShockwaveAlyx
             HealthRemaining(healthRemaining);
         }
 
-        public void PlayerShoot(string weapon)
+        public HapticGroupPattern GetWeaponShootPattern(string weapon, bool leftHanded)
         {
             HapticGroupPattern pattern;
-            if (LeftHandedMode)
+            switch (weapon)
             {
-                pattern = new(new List<HapticGroupInfo>
-                {
-                    new(ShockwaveManager.HapticGroup.LEFT_FOREARM, 1f),
-                    new(ShockwaveManager.HapticGroup.LEFT_ARM, 0.8f),
-                    new(ShockwaveManager.HapticGroup.LEFT_BICEP, 0.4f),
-                    new(ShockwaveManager.HapticGroup.LEFT_SHOULDER, 0.05f),
-                }, 10);
+                case "hlvr_weapon_shotgun":
+                    // Shotgun
+                    if (leftHanded)
+                    {
+                        pattern = new(new List<HapticGroupInfo>
+                        {
+                            new(ShockwaveManager.HapticGroup.LEFT_FOREARM, 1f),
+                            new(ShockwaveManager.HapticGroup.LEFT_ARM, 1f),
+                            new(ShockwaveManager.HapticGroup.LEFT_BICEP, 1f),
+                            new(ShockwaveManager.HapticGroup.LEFT_SHOULDER, 1f),
+                        }, 10);
+                    }
+                    else
+                    {
+                        pattern = new(new List<HapticGroupInfo>
+                        {
+                            new(ShockwaveManager.HapticGroup.RIGHT_FOREARM, 1f),
+                            new(ShockwaveManager.HapticGroup.RIGHT_ARM, 1f),
+                            new(ShockwaveManager.HapticGroup.RIGHT_BICEP, 1f),
+                            new(ShockwaveManager.HapticGroup.RIGHT_SHOULDER, 1f),
+                        }, 10);
+                    }
+                    break;
+                case "hlvr_weapon_rapidfire":
+                case "hlvr_weapon_rapidfire_ammo_capsule":
+                case "hlvr_weapon_rapidfire_bullets_manager":
+                case "hlvr_weapon_rapidfire_energy_ball":
+                case "hlvr_weapon_rapidfire_extended_magazine":
+                case "hlvr_weapon_rapidfire_tag_dart":
+                case "hlvr_weapon_rapidfire_tag_marker":
+                case "hlvr_weapon_rapidfire_upgrade_model":
+                    // SMG-like
+                    if (leftHanded)
+                    {
+                        pattern = new(new List<HapticGroupInfo>
+                        {
+                            new(ShockwaveManager.HapticGroup.LEFT_FOREARM, 0.8f),
+                            new(ShockwaveManager.HapticGroup.LEFT_BICEP, 0.4f),
+                            new(ShockwaveManager.HapticGroup.LEFT_SHOULDER, 0.04f),
+                        }, 10);
+                    }
+                    else
+                    {
+                        pattern = new(new List<HapticGroupInfo>
+                        {
+                            new(ShockwaveManager.HapticGroup.RIGHT_FOREARM, 0.8f),
+                            new(ShockwaveManager.HapticGroup.RIGHT_BICEP, 0.4f),
+                            new(ShockwaveManager.HapticGroup.RIGHT_SHOULDER, 0.04f),
+                        }, 10);
+                    }
+                    break;
+                case "hlvr_weapon_crowbar":
+                case "hlvr_weapon_crowbar_physics":
+                case "hlvr_weapon_energygun":
+                default:
+                    // Pistol-like
+                    if (leftHanded)
+                    {
+                        pattern = new(new List<HapticGroupInfo>
+                        {
+                            new(ShockwaveManager.HapticGroup.LEFT_FOREARM, 1f),
+                            new(ShockwaveManager.HapticGroup.LEFT_BICEP, 0.6f),
+                            new(ShockwaveManager.HapticGroup.LEFT_SHOULDER, 0.05f),
+                        }, 10);
+                    }
+                    else
+                    {
+                        pattern = new(new List<HapticGroupInfo>
+                        {
+                            new(ShockwaveManager.HapticGroup.RIGHT_FOREARM, 1f),
+                            new(ShockwaveManager.HapticGroup.RIGHT_BICEP, 0.6f),
+                            new(ShockwaveManager.HapticGroup.RIGHT_SHOULDER, 0.05f),
+                        }, 10);
+                    }
+                    break;
             }
-            else
-            {
-                pattern = new(new List<HapticGroupInfo>
-                {
-                    new(ShockwaveManager.HapticGroup.RIGHT_FOREARM, 1f),
-                    new(ShockwaveManager.HapticGroup.RIGHT_ARM, 0.8f),
-                    new(ShockwaveManager.HapticGroup.RIGHT_BICEP, 0.4f),
-                    new(ShockwaveManager.HapticGroup.RIGHT_SHOULDER, 0.05f),
-                }, 10);
-            }
+
+            return pattern;
+        }
+
+        public void PlayerShoot(string weapon)
+        {
+            HapticGroupPattern pattern = GetWeaponShootPattern(weapon, LeftHandedMode);
             PlayPattern(pattern);
         }
 
