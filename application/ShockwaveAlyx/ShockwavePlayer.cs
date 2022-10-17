@@ -346,19 +346,18 @@ namespace ShockwaveAlyx
 
         public void StoredItemInItemHolder(bool leftHolder)
         {
-            leftHolder = !leftHolder; // for some reason this is inverted
-            ShockwaveManager.HapticGroup group = leftHolder
-                ? ShockwaveManager.HapticGroup.LEFT_FOREARM
-                : ShockwaveManager.HapticGroup.RIGHT_FOREARM;
-            PlayPattern(new HapticGroupPattern(group, 0.6f, 60));
+            int[] rightArmIndices = { 54, 52, 55 };
+            int[] indices = leftHolder ? _engine.GetPatternMirror(rightArmIndices) : rightArmIndices;
+            HapticIndexPattern pattern = new(indices, 0.6f, 60);
+            PlayPattern(pattern);
         }
 
         public void RemovedItemFromItemHolder(bool leftHolder)
         {
-            ShockwaveManager.HapticGroup group = leftHolder
-                ? ShockwaveManager.HapticGroup.LEFT_FOREARM
-                : ShockwaveManager.HapticGroup.RIGHT_FOREARM;
-            PlayPattern(new HapticGroupPattern(group, 0.6f, 60));
+            int[] rightArmIndices = { 55, 52, 54 };
+            int[] indices = leftHolder ? _engine.GetPatternMirror(rightArmIndices) : rightArmIndices;
+            HapticIndexPattern pattern = new(indices, 0.6f, 60);
+            PlayPattern(pattern);
         }
 
         public void HealthPenUse(float angle)
