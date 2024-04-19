@@ -22,3 +22,8 @@ It includes haptics for the following events (most haptics are still pretty basi
 - Coughing
 - Low health heartbeat
 - Player death
+
+<h1>Troubleshooting</h1>
+If you encounter any problems running the app, install .NET version 5 here https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-5.0.17-windows-x64-installer
+</br></br>
+If it still doesn't work, uninstall other .NET versions and keep only this one. Some players encountered .NET version conflicts and keeping only this version fixes it.
