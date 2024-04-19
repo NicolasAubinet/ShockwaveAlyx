@@ -7,12 +7,12 @@
         <UseWindowsForms>true</UseWindowsForms>
         <ImplicitUsings>enable</ImplicitUsings>
         <ApplicationIcon>shockwave-logo.ico</ApplicationIcon>
-        <LangVersion>9</LangVersion>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
       <None Include="shockwave-logo.png" />
-      <None Update="ShockWaveIMU.dll">
+      <None Update="ShockWave.dll">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
